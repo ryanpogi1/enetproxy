@@ -1,6 +1,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <thread>
 #include "enet/include/enet.h"
@@ -14,6 +15,19 @@ int main() {
     SetConsoleTitleA("proxy by ama");
 #endif
     printf("enet proxy by ama\n");
+
+    std::ifstream vr;
+    vr.open("version.txt");
+    if (!vr) {
+    	printf("version.txt not found, creating...\n");
+        std::ofstream vw;
+        vw.open("version.txt");
+        vw << gt::version;
+        vw.close();
+        printf("version.txt has been created!\n");
+    }
+    vr >> gt::version;
+    vr.close();
 
     std::thread http(http::run, "127.0.0.1", "17191");
     http.detach();
