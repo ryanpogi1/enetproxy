@@ -7,6 +7,7 @@
 #include "enet/include/enet.h"
 #include "http.h"
 #include "server.h"
+#include "gt.hpp"
 
 server* g_server = new server();
 
