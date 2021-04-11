@@ -430,6 +430,10 @@ bool events::in::generictext(std::string packet) {
 bool events::in::gamemessage(std::string packet) {
     PRINTC("Game message: %s\n", packet.c_str());
 
+    if (packet.find("msg|`4UPDATE REQUIRED!`` :") !=std::string::npos) {
+    	gt::updateVersion(packet);
+    }
+
     if (gt::resolving_uid2) {
         if (packet.find("PERSON IGNORED") != -1) {
             g_server->send(false, "action|dialog_return\ndialog_name|friends_guilds\nbuttonClicked|showfriend");
