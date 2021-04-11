@@ -27,3 +27,14 @@ void gt::solve_captcha(std::string text) {
     send_log("Solved captcha as `2" + std::to_string(result) + "``");
     g_server->send(false, "action|dialog_return\ndialog_name|captcha_submit\ncaptcha_answer|" + std::to_string(result));
 }
+
+void gt::updateVersion(std::string text) {
+	utils::replace(text, "action|log\nmsg|`4UPDATE REQUIRED!`` : The `$V", "");
+	utils::replace(text, "`` update is now available for your device.  Go get it!  You'll need to install it before you can play online.", "");
+	gt::version = text;
+	std::ofstream uv;
+	uv.open("version.txt");
+	uv << gt::version;
+	uv.close();
+	gt::send_log("Updating version Success! Please Re-Login for take the Effect");
+}
