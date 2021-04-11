@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include "gt.hpp"
 #include "packet.h"
 #include "server.h"
