@@ -58,6 +58,7 @@ uint8_t* read_file(const char* file, uint32_t* size) {
 
 int http::handler(sb_Event* evt)
 {
+	if (evt->type == SB_EV_REQUEST) {
 		PRINT("%s - %s %s\n", evt->address, evt->method, evt->path);
 			PRINT("got server data request.\n");
 			sb_send_status(evt->stream, 200, "OK");
@@ -86,6 +87,13 @@ int http::handler(sb_Event* evt)
 				sb_send_header(evt->stream, "Content-Type", "text/plain");
 				sb_writef(evt->stream, "file not found");
 			}
+		}
+		else {
+			PRINT("unknown request\n");
+			sb_send_status(evt->stream, 200, "OK");
+			sb_send_header(evt->stream, "Content-Type", "text/plain");
+			sb_writef(evt->stream, "unknown");
+		}
 	}
 	return SB_RES_OK;
 }
