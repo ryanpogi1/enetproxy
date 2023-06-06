@@ -1,5 +1,6 @@
 # Growtopia enet proxy
-
+# Discord Link
+(https://discord.gg/7TamzZ2rHs)
 # Download release for V3.51 [here](https://github.com/ama6nen/enetproxy/releases/tag/V3.51)
 # NOTE: This is not an internal cheat. Proxy is not an internal cheat in any way or form.
 ## For internal see [this](https://github.com/ama6nen/INZERNAL), my new internal project.
